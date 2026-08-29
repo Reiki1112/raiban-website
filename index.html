@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAIBAN Community - Minecraft Roleplay Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<!-- Navigation Bar -->
+<header class="navbar">
+    <a href="#" class="logo">
+        <i class="fa-solid fa-clapperboard logo-icon"></i>
+        <span>RAIBAN</span> COMMUNITY
+    </a>
+    <nav class="nav-links">
+        <a href="#about">เกี่ยวกับค่าย</a>
+        <a href="#projects">โปรเจกต์ของเรา</a>
+        <a href="https://www.tiktok.com/@raibanaeunstudio?_r=1&_t=ZN-99I0wK3t3VG" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+        <a href="https://discord.gg/kk4GdE2gd5" target="_blank" class="btn-nav"><i class="fa-brands fa-discord"></i> ชุมชน Discord</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="about" class="hero">
+    <div class="hero-logo-container">
+        <img src="Logo.png" alt="RAIBAN Community Logo" class="hero-main-logo">
+    </div>
+
+    <div class="hero-badge">
+        <span class="badge-dot"></span> RAIBAN COMMUNITY
+    </div>
+
+    <h1 class="hero-title">
+        สร้างสรรค์เรื่องราว <br>
+        <span class="gradient-text">ผ่านโลก Minecraft Roleplay</span>
+    </h1>
+
+    <p class="hero-subtitle">
+        RAIBAN Community คือสตูดิโอผู้สร้างสรรค์เนื้อหาความบันเทิงคลิปวิดีโอ Minecraft RolePlay
+    </p>
+
+    <div class="hero-buttons">
+        <button class="btn-apply" onclick="openApplyModal()">
+            <i class="fa-solid fa-file-pen"></i> สมัครงานร่วมค่าย
+        </button>
+        <a href="https://discord.gg/kk4GdE2gd5" target="_blank" class="btn-primary">
+            <i class="fa-brands fa-discord"></i> Discord
+        </a>
+        <a href="https://www.tiktok.com/@raibanaeunstudio?_r=1&_t=ZN-99I0wK3t3VG" target="_blank" class="btn-secondary">
+            <i class="fa-brands fa-tiktok"></i> TikTok
+        </a>
+    </div>
+
+    <div class="partner-box">
+        <p class="partner-label">PARTNER & SUPPORTED BY</p>
+        <div class="partner-content">
+            <img src="Logo2.png" alt="ASTEROID STUDIO Logo" class="partner-logo">
+            <div class="partner-text">
+                <span class="partner-name">ASTEROID STUDIO</span>
+                <span class="partner-sub">แอสเทอร์รอยด์ สตูดิโอ</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section">
+    <div class="section-header">
+        <span class="section-tag">OUR PROJECTS</span>
+        <h2 class="section-title">ผลงานซีรีส์ของเรา</h2>
+        <div class="title-bar"></div>
+    </div>
+
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-poster">
+                <img src="Reven.png" alt="Season 1 Ravenhold academy">
+                <div class="season-badge">SEASON 1</div>
+            </div>
+            <div class="project-info">
+                <h3>Ravenhold Academy</h3>
+                <p class="project-desc">
+                    เรื่องราวการผจญภัยและความลับอันลึกลับภายในสถาบันเรเวนโฮลด์ ที่รอคอยการค้นพบและเปิดเผย...
+                </p>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-poster">
+                <img src="WINTERHOOD.png" alt="Season 2 Winterhood">
+                <div class="season-badge">SEASON 2</div>
+            </div>
+            <div class="project-info">
+                <h3>Winterhood</h3>
+                <p class="project-desc">
+                    คุกหิมะที่ไม่ได้ตั้งอยู่ในประเทศใดเลย ทว่าในคุกกลับมีเรื่องราวสุดแปลกที่ไม่อาจมีใครรู้ได้ เพราะคนที่รู้ไม่เคยรอดกลับมาเล่าเรื่อง
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Application Modal -->
+<div id="applyModal" class="modal-overlay">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeApplyModal()">&times;</button>
+
+        <div class="modal-header">
+            <h2><i class="fa-solid fa-file-pen"></i> ฟอร์มสมัคร Roleplay RAIBAN Community</h2>
+            <p>กรุณาอ่านข้อกำหนดและกรอกข้อมูลให้ครบถ้วนก่อนส่งใบสมัคร</p>
+        </div>
+
+        <div class="modal-body">
+            <div class="requirements-box">
+                <h3><i class="fa-solid fa-triangle-exclamation"></i> ข้อกำหนดผู้สมัคร</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> อายุ 14 ปีขึ้นไป</li>
+                    <li><i class="fa-solid fa-check"></i> มีความรับผิดชอบต่อหน้าที่สูง</li>
+                    <li><i class="fa-solid fa-check"></i> ไม่สร้างปัญหาที่ก่อให้เกิดความวุ่นวายภายในค่าย</li>
+                    <li><i class="fa-solid fa-check"></i> ต้องมีประสบการณ์อย่างน้อย 1 โปรเจกต์ (ต้องเป็นโปรเจกต์ที่เล่นจบแล้ว)</li>
+                </ul>
+            </div>
+
+            <form class="apply-form" onsubmit="handleApplySubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label><i class="fa-solid fa-envelope"></i> ช่องทางติดต่อ E-mail <span class="required">*</span></label>
+                        <input type="email" required placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label><i class="fa-solid fa-share-nodes"></i> ช่องทางติดต่ออื่น (เช่น Instagram, Facebook, Discord ID)</label>
+                        <input type="text" placeholder="เช่น IG: username / FB: Name Account">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> ชื่อ OOC <span class="required">*</span></label>
+                        <input type="text" required placeholder="ระบุชื่อ OOC">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user-gear"></i> ชื่อ IC <span class="required">*</span></label>
+                        <input type="text" required placeholder="ระบุชื่อ IC">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-cake-candles"></i> อายุ OOC <span class="required">*</span></label>
+                        <input type="number" min="14" required placeholder="ต้องมีอายุ 14 ปีขึ้นไป">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-cake-candles"></i> อายุ IC <span class="required">*</span></label>
+                        <input type="number" required placeholder="ระบุอายุตัวละคร">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-venus-mars"></i> เพศ OOC <span class="required">*</span></label>
+                        <select required>
+                            <option value="" disabled selected>เลือกเพศ OOC</option>
+                            <option value="ชาย">ชาย</option>
+                            <option value="หญิง">หญิง</option>
+                            <option value="LGBTQ+">LGBTQ+</option>
+                            <option value="ไม่ระบุ">ไม่ระบุ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-venus-mars"></i> เพศ IC <span class="required">*</span></label>
+                        <select required>
+                            <option value="ชาย">ชาย</option>
+                            <option value="หญิง">หญิง</option>
+                            <option value="LGBTQ+">LGBTQ+</option>
+                            <option value="ไม่ระบุ">ไม่ระบุ</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="button" class="btn-cancel" onclick="closeApplyModal()">ยกเลิก</button>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> ส่งใบสมัคร</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Status Popup -->
+<div id="statusPopup" class="status-popup-overlay">
+    <div class="status-popup-card">
+        <div id="statusLoading" class="status-content">
+            <div class="spinner"></div>
+            <h3>กำลังส่งข้อมูล...</h3>
+            <p>กรุณารอสักครู่ ห้ามปิดหน้าต่างนี้</p>
+        </div>
+
+        <div id="statusSuccess" class="status-content" style="display: none;">
+            <div class="icon-success"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>ส่งใบสมัครเรียบร้อย!</h3>
+            <p>ทีมงานได้รับข้อมูลเรียบร้อยแล้ว จะทำการติดต่อกลับโดยเร็วที่สุด</p>
+            <button class="btn-popup-close" onclick="closeStatusPopup()">ตกลง</button>
+        </div>
+
+        <div id="statusError" class="status-content" style="display: none;">
+            <div class="icon-error"><i class="fa-solid fa-circle-xmark"></i></div>
+            <h3>เกิดข้อผิดพลาด!</h3>
+            <p>ไม่สามารถส่งข้อมูลได้ กรุณาลองใหม่อีกครั้ง</p>
+            <button class="btn-popup-close btn-error-close" onclick="closeStatusPopup()">ปิด</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVoAGVL3JqndNn3FL8rOlvhKNYFNSFy-H2I-8P9bIzC6DnsRoVU180_obrHQ2qtt8Z/exec";
+
+    function openApplyModal() {
+        document.getElementById('applyModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeApplyModal() {
+        document.getElementById('applyModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function closeStatusPopup() {
+        document.getElementById('statusPopup').classList.remove('active');
+    }
+
+    async function handleApplySubmit(event) {
+        event.preventDefault();
+
+        const popup = document.getElementById('statusPopup');
+        const loadingBox = document.getElementById('statusLoading');
+        const successBox = document.getElementById('statusSuccess');
+        const errorBox = document.getElementById('statusError');
+
+        loadingBox.style.display = 'block';
+        successBox.style.display = 'none';
+        errorBox.style.display = 'none';
+        popup.classList.add('active');
+
+        const form = event.target;
+
+        const payload = {
+            email: form[0].value,
+            contactOther: form[1].value,
+            nameOOC: form[2].value,
+            nameIC: form[3].value,
+            ageOOC: form[4].value,
+            ageIC: form[5].value,
+            genderOOC: form[6].value,
+            genderIC: form[7].value
+        };
+
+        try {
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            loadingBox.style.display = 'none';
+            successBox.style.display = 'block';
+            closeApplyModal();
+            form.reset();
+
+        } catch (error) {
+            console.error(error);
+            loadingBox.style.display = 'none';
+            errorBox.style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>
