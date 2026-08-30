@@ -23,22 +23,22 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000768284407662" />
-      <entry key="S5" value="1.0226070022659615" />
-      <entry key="S10" value="1.1535999851327383" />
-      <entry key="S30" value="2.09704715673832" />
-      <entry key="S60" value="3.8411894054004763" />
-      <entry key="M2" value="5.957005471850096" />
-      <entry key="M5" value="8.060973646124872" />
-      <entry key="M10" value="8.96678277962597" />
-      <entry key="M15" value="9.296171952736966" />
-      <entry key="M30" value="9.640350190459424" />
-      <entry key="H1" value="9.818197262383555" />
-      <entry key="H2" value="9.908598576834782" />
-      <entry key="H4" value="9.954173568293161" />
-      <entry key="D1" value="9.992344739956486" />
-      <entry key="W1" value="9.998905961537716" />
+      <entry key="MS500" value="1.0005209026642576" />
+      <entry key="S2" value="1.2537775503294997" />
+      <entry key="S5" value="1.885476504089874" />
+      <entry key="S10" value="2.4244338768588247" />
+      <entry key="S30" value="3.696947437833764" />
+      <entry key="S60" value="5.516671208007341" />
+      <entry key="M2" value="7.719387104481538" />
+      <entry key="M5" value="9.935776439658" />
+      <entry key="M10" value="10.897667971510117" />
+      <entry key="M15" value="11.248513302359283" />
+      <entry key="M30" value="11.61569363251985" />
+      <entry key="H1" value="11.805655126199936" />
+      <entry key="H2" value="11.902273139290319" />
+      <entry key="H4" value="11.950997142479576" />
+      <entry key="D1" value="11.991813422092843" />
+      <entry key="W1" value="11.998830011994684" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -60,52 +60,52 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.6830201283771977" />
-      <entry key="MS500" value="0.9265880618903709" />
-      <entry key="S2" value="0.9811940139916819" />
-      <entry key="S5" value="1.0147992543389937" />
-      <entry key="S10" value="1.149060176696623" />
-      <entry key="S30" value="2.093401494413692" />
-      <entry key="S60" value="3.8371755889294077" />
-      <entry key="M2" value="5.953667924854696" />
-      <entry key="M5" value="8.059112672003172" />
-      <entry key="M10" value="8.965739581232421" />
-      <entry key="M15" value="9.295449210193835" />
-      <entry key="M30" value="9.63997458141213" />
-      <entry key="H1" value="9.818005781884702" />
-      <entry key="H2" value="9.908501902649784" />
-      <entry key="H4" value="9.954124995825097" />
-      <entry key="D1" value="9.992336611692407" />
-      <entry key="W1" value="9.998904799550461" />
+      <entry key="MS100" value="0.059539874877746084" />
+      <entry key="MS500" value="0.5692476001100906" />
+      <entry key="S2" value="1.1126809455383202" />
+      <entry key="S5" value="1.817282725291905" />
+      <entry key="S10" value="2.386108405794772" />
+      <entry key="S30" value="3.6811151171892362" />
+      <entry key="S60" value="5.506468518372055" />
+      <entry key="M2" value="7.712900573801551" />
+      <entry key="M5" value="9.93262758804864" />
+      <entry key="M10" value="10.895973791906608" />
+      <entry key="M15" value="11.247354778045919" />
+      <entry key="M30" value="11.615099171404285" />
+      <entry key="H1" value="11.805353966681942" />
+      <entry key="H2" value="11.9021215607011" />
+      <entry key="H4" value="11.950921101375691" />
+      <entry key="D1" value="11.991800713422315" />
+      <entry key="W1" value="11.998828195607079" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3Icn5UgN8j5K6Tf7GZPFSxCjQmi" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/User/Downloads/RaiBan Community",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/RaiBan Community&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Downloads\RaiBan Community" />
