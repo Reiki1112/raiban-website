@@ -172,41 +172,46 @@
                 </ul>
             </div>
 
-            <form class="apply-form" onsubmit="handleApplySubmit(event)">
+            <form class="apply-form" id="applyForm" onsubmit="handleApplySubmit(event)">
                 <div class="form-grid">
                     <div class="form-group full-width">
                         <label><i class="fa-solid fa-envelope"></i> ช่องทางติดต่อ E-mail <span class="required">*</span></label>
-                        <input type="email" required placeholder="example@email.com">
+                        <input type="email" id="email" required placeholder="example@email.com">
                     </div>
 
                     <div class="form-group full-width">
-                        <label><i class="fa-solid fa-share-nodes"></i> ช่องทางติดต่ออื่น (เช่น Instagram, Facebook, Discord ID)</label>
-                        <input type="text" placeholder="เช่น IG: username / FB: Name Account">
+                        <label><i class="fa-brands fa-discord"></i> Discord ID <span class="required">*</span></label>
+                        <input type="text" id="discordId" required placeholder="เช่น username หรือ username#0000">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label><i class="fa-solid fa-share-nodes"></i> ช่องทางติดต่ออื่น (เช่น Instagram, Facebook)</label>
+                        <input type="text" id="contactOther" placeholder="เช่น IG: username / FB: Name Account">
                     </div>
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-user"></i> ชื่อ OOC <span class="required">*</span></label>
-                        <input type="text" required placeholder="ระบุชื่อ OOC">
+                        <input type="text" id="nameOOC" required placeholder="ระบุชื่อ OOC">
                     </div>
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-user-gear"></i> ชื่อ IC <span class="required">*</span></label>
-                        <input type="text" required placeholder="ระบุชื่อ IC">
+                        <input type="text" id="nameIC" required placeholder="ระบุชื่อ IC">
                     </div>
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-cake-candles"></i> อายุ OOC <span class="required">*</span></label>
-                        <input type="number" min="14" required placeholder="ต้องมีอายุ 14 ปีขึ้นไป">
+                        <input type="number" id="ageOOC" min="14" required placeholder="ต้องมีอายุ 14 ปีขึ้นไป">
                     </div>
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-cake-candles"></i> อายุ IC <span class="required">*</span></label>
-                        <input type="number" required placeholder="ระบุอายุตัวละคร">
+                        <input type="number" id="ageIC" required placeholder="ระบุอายุตัวละคร">
                     </div>
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-venus-mars"></i> เพศ OOC <span class="required">*</span></label>
-                        <select required>
+                        <select id="genderOOC" required>
                             <option value="" disabled selected>เลือกเพศ OOC</option>
                             <option value="ชาย">ชาย</option>
                             <option value="หญิง">หญิง</option>
@@ -216,7 +221,7 @@
 
                     <div class="form-group">
                         <label><i class="fa-solid fa-venus-mars"></i> เพศ IC <span class="required">*</span></label>
-                        <select required>
+                        <select id="genderIC" required>
                             <option value="" disabled selected>เลือกเพศ IC</option>
                             <option value="ชาย">ชาย</option>
                             <option value="หญิง">หญิง</option>
@@ -261,13 +266,13 @@
 </div>
 
 <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVoAGVL3JqndNn3FL8rOlvhKNYFNSFy-H2I-8P9bIzC6DnsRoVU180_obrHQ2qtt8Z/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyo6fGlNYvJOSqde4dk1_IfnjDU4qevg6569Ymh_1mpLYiUAzEhKZ2rx_6BuqaeuJTfmw/exec";
 
     const membersData = {
         member1: {
             name: "Scubydoo",
             role: "Founder",
-            avatar: "beam.jpg",
+            avatar: "scubydoo.jpg",
             bio: "ผู้ก่อตั้งแต่จุดกำเนิดของ ProJect RAIBAN Studio มีความเชี่ยวชาญด้านการกำกับเนื้อเรื่องและคุมโทนบรรยากาศในเกม",
             projects: ["Ravenhold Academy (Director)", "Winterhood (Director)"],
             socials: {
@@ -280,7 +285,7 @@
             name: "Reiki Fenrir (Asteroid Studio)",
             role: "Coding / Modder",
             avatar: "Reiki.png",
-            isPartner: true, // 🟢 แท็ก PARTNER
+            isPartner: true,
             bio: "ทีมนักพัฒนาโค๊ดหลังบ้านละจัดการเกี่ยวกับ Mod ต่างๆภายในเกม",
             projects: ["None"],
             socials: {
@@ -291,7 +296,7 @@
         member3: {
             name: "Norreyaeun",
             role: "Server Admin",
-            avatar: "Norry.jpg",
+            avatar: "norrey.jpg",
             bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Studio",
             projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"],
             socials: {
@@ -332,7 +337,6 @@
         Object.keys(membersData).forEach(id => {
             const member = membersData[id];
 
-            // แสดงแท็ก PARTNER ด้านบนซ้ายกรณีที่ตั้งค่า isPartner: true
             const partnerBadge = member.isPartner
                 ? `<span class="partner-card-badge"><i class="fa-solid fa-handshake"></i> PARTNER</span>`
                 : '';
@@ -420,17 +424,16 @@
         errorBox.style.display = 'none';
         popup.classList.add('active');
 
-        const form = event.target;
-
         const payload = {
-            email: form[0].value,
-            contactOther: form[1].value,
-            nameOOC: form[2].value,
-            nameIC: form[3].value,
-            ageOOC: form[4].value,
-            ageIC: form[5].value,
-            genderOOC: form[6].value,
-            genderIC: form[7].value
+            email: document.getElementById('email').value,
+            discordId: document.getElementById('discordId').value,
+            contactOther: document.getElementById('contactOther').value,
+            nameOOC: document.getElementById('nameOOC').value,
+            nameIC: document.getElementById('nameIC').value,
+            ageOOC: document.getElementById('ageOOC').value,
+            ageIC: document.getElementById('ageIC').value,
+            genderOOC: document.getElementById('genderOOC').value,
+            genderIC: document.getElementById('genderIC').value
         };
 
         try {
@@ -444,7 +447,7 @@
             loadingBox.style.display = 'none';
             successBox.style.display = 'block';
             closeApplyModal();
-            form.reset();
+            document.getElementById('applyForm').reset();
 
         } catch (error) {
             console.error(error);

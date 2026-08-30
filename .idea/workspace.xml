@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f4317f00-f597-48bb-964a-8cd28f350818" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.000000005195825" />
+      <entry key="MS500" value="1.0220359056956658" />
+      <entry key="S2" value="1.3890856507454497" />
+      <entry key="S5" value="1.8410908714659011" />
+      <entry key="S10" value="2.3859419732214837" />
+      <entry key="S30" value="3.2449481870293173" />
+      <entry key="S60" value="3.5849758925816193" />
+      <entry key="M2" value="3.7820875946357098" />
+      <entry key="M5" value="3.9101944694049524" />
+      <entry key="M10" value="3.954644503754338" />
+      <entry key="M15" value="3.9696614374823707" />
+      <entry key="M30" value="3.9847796945238363" />
+      <entry key="H1" value="3.9923770456823076" />
+      <entry key="H2" value="3.9961853167375656" />
+      <entry key="H4" value="3.9980918561281698" />
+      <entry key="D1" value="3.9996818645383394" />
+      <entry key="W1" value="3.9999545493459174" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.7269862625436428" />
+      <entry key="MS500" value="0.9590107128268269" />
+      <entry key="S2" value="1.367640191797899" />
+      <entry key="S5" value="1.8297078633239652" />
+      <entry key="S10" value="2.378457714316109" />
+      <entry key="S30" value="3.241487009863843" />
+      <entry key="S60" value="3.58305217926956" />
+      <entry key="M2" value="3.781069606411045" />
+      <entry key="M5" value="3.9097726608382786" />
+      <entry key="M10" value="3.9544310624674726" />
+      <entry key="M15" value="3.969518571760263" />
+      <entry key="M30" value="3.984707973935907" />
+      <entry key="H1" value="3.99234111308664" />
+      <entry key="H2" value="3.9961673323178637" />
+      <entry key="H4" value="3.998082859382034" />
+      <entry key="D1" value="3.9996803644501155" />
+      <entry key="W1" value="3.999954335032152" />
+    </decayedShown>
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "last_opened_file_path": "C:/Users/User/Downloads/RaiBan Community",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Downloads\RaiBan Community" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>

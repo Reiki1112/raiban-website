@@ -52,9 +52,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    padding: 1.2rem 5%;
     position: relative;
     z-index: 10;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .logo {
@@ -80,7 +82,8 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -88,6 +91,7 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -97,7 +101,7 @@ body {
 .btn-nav {
     background: var(--primary);
     color: #fff !important;
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     border-radius: 20px;
     font-weight: 600;
     transition: transform 0.3s, background 0.3s !important;
@@ -115,7 +119,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 3rem 1.5rem 5rem;
+    padding: 2rem 1.5rem 4rem;
     position: relative;
     z-index: 1;
 }
@@ -130,7 +134,7 @@ body {
 
 .hero-main-logo {
     width: 100%;
-    max-width: 250px;
+    max-width: 220px;
     height: auto;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
@@ -166,9 +170,9 @@ body {
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.25;
     margin-bottom: 1rem;
 }
 
@@ -179,7 +183,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     max-width: 600px;
     margin-bottom: 2rem;
@@ -188,18 +192,22 @@ body {
 
 .hero-buttons {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 3rem;
+    width: 100%;
 }
 
 .btn-primary, .btn-secondary {
-    padding: 0.8rem 1.8rem;
+    padding: 0.8rem 1.6rem;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     transition: all 0.3s ease;
 }
@@ -231,7 +239,7 @@ body {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
-    padding: 1rem 2rem;
+    padding: 1rem 1.8rem;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -283,14 +291,14 @@ body {
 .projects-section {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
+    padding: 3rem 1.5rem 5rem;
     position: relative;
     z-index: 1;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .section-tag {
@@ -301,7 +309,7 @@ body {
 }
 
 .section-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 800;
     margin-top: 0.4rem;
 }
@@ -316,8 +324,8 @@ body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }
 
 .project-card {
@@ -338,7 +346,7 @@ body {
 .project-poster {
     position: relative;
     width: 100%;
-    height: 240px;
+    height: 220px;
     overflow: hidden;
     background: #1a1728;
 }
@@ -369,28 +377,28 @@ body {
 }
 
 .project-info {
-    padding: 1.5rem;
+    padding: 1.2rem;
     text-align: left;
 }
 
 .project-info h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
 }
 
 .project-desc {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.6;
 }
 
-/* Team Section Styling (สไลด์เลื่อนแนวนอน) */
+/* Team Section Styling */
 .team-section {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem 1.5rem 6rem;
+    padding: 2rem 1.5rem 5rem;
     position: relative;
     z-index: 1;
 }
@@ -398,15 +406,14 @@ body {
 .team-grid {
     display: flex;
     overflow-x: auto;
-    gap: 1.5rem;
-    padding: 1rem 0.5rem 2rem 0.5rem;
+    gap: 1.2rem;
+    padding: 1rem 0.5rem 1.8rem 0.5rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
 }
 
-/* Custom Scrollbar สำหรับโซนทีม */
 .team-grid::-webkit-scrollbar {
-    height: 8px;
+    height: 6px;
 }
 
 .team-grid::-webkit-scrollbar-track {
@@ -424,19 +431,20 @@ body {
 }
 
 .team-card {
-    flex: 0 0 260px;
+    flex: 0 0 250px;
     scroll-snap-align: start;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 1.8rem 1.2rem;
+    padding: 1.5rem 1rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .team-card:hover {
@@ -445,10 +453,28 @@ body {
     box-shadow: 0 12px 30px rgba(64, 61, 136, 0.3);
 }
 
+.partner-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #AF719D, #403D88);
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 2;
+}
+
 .team-avatar-box {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 1rem;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 0.8rem;
     position: relative;
 }
 
@@ -462,12 +488,8 @@ body {
     transition: transform 0.3s ease;
 }
 
-.team-card:hover .team-avatar {
-    transform: scale(1.05);
-}
-
 .team-role {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: var(--light-pink);
     letter-spacing: 1px;
@@ -477,10 +499,10 @@ body {
 }
 
 .team-name {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -488,10 +510,10 @@ body {
 }
 
 .team-short-bio {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     line-height: 1.5;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -503,18 +525,12 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: var(--text-main);
-    padding: 0.5rem 1.2rem;
+    padding: 0.45rem 1rem;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-.team-card:hover .btn-member-more {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: #fff;
 }
 
 /* Modal Overlay & Base Container */
@@ -533,7 +549,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    padding: 20px;
+    padding: 15px;
 }
 
 .modal-overlay.active {
@@ -544,9 +560,9 @@ body {
 .modal-container {
     background: #171426;
     border: 1px solid rgba(248, 178, 178, 0.2);
-    width: 92%;
-    max-width: 900px;
-    height: 90vh;
+    width: 100%;
+    max-width: 850px;
+    max-height: 90vh;
     border-radius: 24px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     display: flex;
@@ -561,15 +577,14 @@ body {
     to { transform: scale(1); opacity: 1; }
 }
 
-/* Member Modal (ขนาดกระชับ) */
 .member-modal-container {
     height: auto;
-    max-height: 80vh;
-    max-width: 500px;
+    max-height: 85vh;
+    max-width: 480px;
 }
 
 .member-modal-body {
-    padding: 1.8rem;
+    padding: 1.5rem;
     overflow-y: auto;
 }
 
@@ -583,15 +598,15 @@ body {
 }
 
 .member-modal-avatar {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--accent);
 }
 
 .member-header-details h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #ffffff;
     margin: 0.2rem 0 0.4rem;
 }
@@ -655,7 +670,6 @@ body {
     color: var(--accent);
 }
 
-/* Apply Modal & Others */
 .modal-close {
     position: absolute;
     top: 15px;
@@ -674,12 +688,12 @@ body {
 }
 
 .modal-header {
-    padding: 2rem 2.5rem 1rem;
+    padding: 1.5rem 1.8rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .modal-header h2 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -692,12 +706,12 @@ body {
 
 .modal-header p {
     color: var(--text-muted);
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     margin-top: 5px;
 }
 
 .modal-body {
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 1.8rem;
     overflow-y: auto;
     flex: 1;
 }
@@ -705,15 +719,15 @@ body {
 .requirements-box {
     background: rgba(64, 61, 136, 0.15);
     border: 1px dashed var(--accent);
-    padding: 1.2rem 1.5rem;
+    padding: 1rem 1.2rem;
     border-radius: 16px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .requirements-box h3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--light-pink);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -723,11 +737,11 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .requirements-box li {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     color: var(--text-main);
     display: flex;
     align-items: center;
@@ -736,16 +750,17 @@ body {
 
 .requirements-box li i {
     color: #4cd137;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .btn-apply {
-    padding: 0.8rem 1.8rem;
+    padding: 0.8rem 1.6rem;
     border-radius: 30px;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     background: linear-gradient(135deg, #AF719D, #8B639B);
     color: #ffffff;
@@ -755,15 +770,10 @@ body {
     transition: all 0.3s ease;
 }
 
-.btn-apply:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(175, 113, 157, 0.6);
-}
-
 .apply-form .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
+    gap: 1rem;
 }
 
 .form-group {
@@ -777,7 +787,7 @@ body {
 }
 
 .form-group label {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: var(--text-muted);
     display: flex;
@@ -794,9 +804,9 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
-    padding: 0.75rem 1rem;
+    padding: 0.7rem 0.9rem;
     color: #ffffff;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     outline: none;
     transition: border-color 0.3s;
 }
@@ -814,43 +824,35 @@ body {
 .form-footer {
     display: flex;
     justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
 }
 
 .btn-cancel {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--text-muted);
-    padding: 0.7rem 1.5rem;
+    padding: 0.65rem 1.2rem;
     border-radius: 20px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 0.85rem;
     transition: all 0.3s;
-}
-
-.btn-cancel:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
 }
 
 .btn-submit {
     background: var(--primary);
     border: none;
     color: #fff;
-    padding: 0.7rem 1.8rem;
+    padding: 0.65rem 1.5rem;
     border-radius: 20px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
     gap: 8px;
     transition: all 0.3s;
-}
-
-.btn-submit:hover {
-    background: var(--secondary);
-    transform: translateY(-2px);
 }
 
 /* Status Popup Overlay */
@@ -880,21 +882,21 @@ body {
     background: #1e1b2e;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.5rem;
     width: 90%;
-    max-width: 380px;
+    max-width: 360px;
     text-align: center;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border: 4px solid rgba(255, 255, 255, 0.1);
     border-top: 4px solid var(--accent);
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin: 0 auto 1.2rem;
+    margin: 0 auto 1rem;
 }
 
 @keyframes spin {
@@ -904,96 +906,114 @@ body {
 
 .status-content h3 {
     color: #ffffff;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
 }
 
 .status-content p {
     color: var(--text-muted);
-    font-size: 0.88rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
 }
 
 .icon-success i {
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: #2ed573;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .icon-error i {
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: #ff4757;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .btn-popup-close {
     background: var(--primary);
     color: #ffffff;
     border: none;
-    padding: 0.7rem 2rem;
+    padding: 0.6rem 1.8rem;
     border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-popup-close:hover {
-    background: var(--secondary);
-    transform: translateY(-2px);
 }
 
 .btn-error-close {
     background: #ff4757;
 }
 
-/* Responsive Styles */
+/* Responsive Styles สำหรับหน้าจอมือถือ */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 4%;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+
+    .btn-nav {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .btn-primary, .btn-secondary, .btn-apply {
+        width: 100%;
+    }
+
     .apply-form .form-grid {
         grid-template-columns: 1fr;
     }
+
     .form-group.full-width {
         grid-column: span 1;
     }
+
     .modal-container {
-        height: 95vh;
-        width: 95%;
+        max-height: 92vh;
+    }
+
+    .modal-header {
+        padding: 1.2rem 1.2rem 0.8rem;
+    }
+
+    .modal-body {
+        padding: 1.2rem;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
+    .navbar {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+        width: 100%;
+    }
+
     .member-modal-header {
         flex-direction: column;
         text-align: center;
     }
+
     .member-socials {
         justify-content: center;
     }
-}
-
-/* กำหนดให้การ์ดรองรับตำแหน่งการวาง Badge */
-.team-card {
-    position: relative; /* เพิ่มคุณสมบัตินี้เพื่อให้วาง Badge มุมซ้ายบนได้ */
-}
-
-/* แท็ก Partner บนมุมซ้ายของการ์ด */
-.partner-card-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: linear-gradient(135deg, #AF719D, #403D88);
-    color: #ffffff;
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    padding: 0.25rem 0.6rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    z-index: 2;
-}
-
-.partner-card-badge i {
-    font-size: 0.65rem;
 }
