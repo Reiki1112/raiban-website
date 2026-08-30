@@ -25,6 +25,7 @@
     <nav class="nav-links">
         <a href="#about">เกี่ยวกับค่าย</a>
         <a href="#projects">โปรเจกต์ของเรา</a>
+        <a href="#shop">ร้านค้า</a>
         <a href="#team">สมาชิก</a>
         <a href="https://www.tiktok.com/@raibanaeunstudio?_r=1&_t=ZN-99I0wK3t3VG" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
         <a href="https://discord.gg/kk4GdE2gd5" target="_blank" class="btn-nav"><i class="fa-brands fa-discord"></i> ชุมชน Discord</a>
@@ -106,6 +107,35 @@
                 <p class="project-desc">
                     คุกหิมะที่ไม่ได้ตั้งอยู่ในประเทศใดเลย ทว่าในคุกกลับมีเรื่องราวสุดแปลกที่ไม่อาจมีใครรู้ได้ เพราะคนที่รู้ไม่เคยรอดกลับมาเล่าเรื่อง
                 </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Shop Section -->
+<section id="shop" class="projects-section">
+    <div class="section-header">
+        <span class="section-tag">STORE & SERVICES</span>
+        <h2 class="section-title">ร้านค้าและบริการ</h2>
+        <div class="title-bar"></div>
+    </div>
+
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-poster">
+                <img src="Logo.png" alt="Shop Section">
+                <div class="season-badge">STORE</div>
+            </div>
+            <div class="project-info">
+                <h3>ร้านค้า RAIBAN Studio</h3>
+                <p class="project-desc">
+                    เลือกซื้อสินค้าและบริการพิเศษจากสตูดิโอของเรา
+                </p>
+                <div class="product-price-bar">
+                    <button class="btn-buy-sm" onclick="openNoticeModal('ยังไม่มีสินค้าในขณะนี้')">
+                        <i class="fa-solid fa-cart-shopping"></i> สั่งซื้อสินค้า
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -240,6 +270,18 @@
     </div>
 </div>
 
+<!-- Notice Popup Center Screen -->
+<div id="noticeModal" class="notice-modal-overlay">
+    <div class="notice-modal-card">
+        <div class="notice-icon">
+            <i class="fa-solid fa-box-open"></i>
+        </div>
+        <h3 class="notice-title">การแจ้งเตือน</h3>
+        <p class="notice-message" id="noticeMessage">ยังไม่มีสินค้าในขณะนี้</p>
+        <button class="btn-notice-close" onclick="closeNoticeModal()">ตกลง</button>
+    </div>
+</div>
+
 <!-- Status Popup -->
 <div id="statusPopup" class="status-popup-overlay">
     <div class="status-popup-card">
@@ -266,9 +308,22 @@
 </div>
 
 <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVoAGVL3JqndNn3FL8rOlvhKNYFNSFy-H2I-8P9bIzC6DnsRoVU180_obrHQ2qtt8Z/exec";
+    // วาง Webhook URL ของ Discord ที่นี่
+    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1543604705916092477/SmORLDeNCEXY_LR66BerJ8sOu0C_S5UFuDk8eInNeT6qVEiYP7cKGV2EX-YEnK4BXGXX";
 
-    // อัปเดตชื่อไฟล์รูปภาพให้ตรงกับในเครื่องเป๊ะๆ
+    function openNoticeModal(message) {
+        if(message) {
+            document.getElementById('noticeMessage').textContent = message;
+        }
+        document.getElementById('noticeModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeNoticeModal() {
+        document.getElementById('noticeModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
     const membersData = {
         member1: {
             name: "Scubydoo",
@@ -276,9 +331,7 @@
             avatar: "scubydoo.jpg",
             bio: "ผู้ก่อตั้งแต่จุดกำเนิดของ ProJect RAIBAN Studio มีความเชี่ยวชาญด้านการกำกับเนื้อเรื่องและคุมโทนบรรยากาศในเกม",
             projects: ["Ravenhold Academy (Director)", "Winterhood (Director)"],
-            socials: {
-                youtube: "https://www.youtube.com/@Ramyo-142"
-            }
+            socials: { youtube: "https://www.youtube.com/@Ramyo-142" }
         },
         member2: {
             name: "Reiki Fenrir (Asteroid Studio)",
@@ -287,15 +340,12 @@
             isPartner: true,
             bio: "ทีมนักพัฒนาโค๊ดหลังบ้านละจัดการเกี่ยวกับ Mod ต่างๆภายในเกม",
             projects: ["None"],
-            socials: {
-                tiktok: "https://www.tiktok.com/@reikifenrirch",
-                discord: "https://discord.gg/PCQ8TRVZFp"
-            }
+            socials: { tiktok: "https://www.tiktok.com/@reikifenrirch", discord: "https://discord.gg/PCQ8TRVZFp" }
         },
         member3: {
             name: "Norreyaeun",
             role: "Server Admin",
-            avatar: "norrey.jpg", // แก้ให้ตรงกับชื่อไฟล์ในเครื่อง
+            avatar: "norrey.jpg",
             bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Studio",
             projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"]
         },
@@ -316,7 +366,7 @@
         member6: {
             name: "Finn",
             role: "Admin",
-            avatar: "Finn.jpg", // แก้ให้ตรงกับตัวพิมพ์ใหญ่ F
+            avatar: "Finn.jpg",
             bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Studio",
             projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"]
         }
@@ -325,12 +375,10 @@
     function renderTeamCards() {
         const teamGrid = document.getElementById('teamGrid');
         if (!teamGrid) return;
-
         teamGrid.innerHTML = '';
 
         Object.keys(membersData).forEach(id => {
             const member = membersData[id];
-
             const partnerBadge = member.isPartner
                 ? `<span class="partner-card-badge"><i class="fa-solid fa-handshake"></i> PARTNER</span>`
                 : '';
@@ -403,6 +451,7 @@
         document.getElementById('statusPopup').classList.remove('active');
     }
 
+    // ฟังก์ชันส่งข้อมูลผ่าน Discord Webhook
     async function handleApplySubmit(event) {
         event.preventDefault();
 
@@ -416,39 +465,78 @@
         errorBox.style.display = 'none';
         popup.classList.add('active');
 
+        const email = document.getElementById('email').value;
+        const discordId = document.getElementById('discordId').value;
+        const contactOther = document.getElementById('contactOther').value || 'ไม่มีการระบุ';
+        const nameOOC = document.getElementById('nameOOC').value;
+        const nameIC = document.getElementById('nameIC').value;
+        const ageOOC = document.getElementById('ageOOC').value;
+        const ageIC = document.getElementById('ageIC').value;
+        const genderOOC = document.getElementById('genderOOC').value;
+        const genderIC = document.getElementById('genderIC').value;
+
         const payload = {
-            email: document.getElementById('email').value,
-            discordId: document.getElementById('discordId').value,
-            contactOther: document.getElementById('contactOther').value,
-            nameOOC: document.getElementById('nameOOC').value,
-            nameIC: document.getElementById('nameIC').value,
-            ageOOC: document.getElementById('ageOOC').value,
-            ageIC: document.getElementById('ageIC').value,
-            genderOOC: document.getElementById('genderOOC').value,
-            genderIC: document.getElementById('genderIC').value
+            username: "RAIBAN Studio Application System",
+            avatar_url: "Logo.png",
+            embeds: [
+                {
+                    title: "📝 มีใบสมัครเข้าร่วมค่ายใหม่เข้ามา!",
+                    color: 11501213,
+                    fields: [
+                        { name: "📧 Email", value: email, inline: true },
+                        { name: "💬 Discord ID", value: discordId, inline: true },
+                        { name: "📱 ติดต่ออื่นๆ", value: contactOther, inline: true },
+                        { name: "👤 ชื่อ OOC", value: nameOOC, inline: true },
+                        { name: "🎂 อายุ OOC", value: ageOOC + " ปี", inline: true },
+                        { name: "⚧ เพศ OOC", value: genderOOC, inline: true },
+                        { name: "🎭 ชื่อ IC", value: nameIC, inline: true },
+                        { name: "🕯️ อายุ IC", value: ageIC + " ปี", inline: true },
+                        { name: "⚧ เพศ IC", value: genderIC, inline: true }
+                    ],
+                    footer: { text: "RAIBAN Studio Application Log" },
+                    timestamp: new Date().toISOString()
+                }
+            ]
         };
 
-        try {
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
+        const sendToDiscord = async (retryCount = 0) => {
+            try {
+                const response = await fetch(DISCORD_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
-            loadingBox.style.display = 'none';
-            successBox.style.display = 'block';
-            closeApplyModal();
-            document.getElementById('applyForm').reset();
+                if (response.status === 429) {
+                    // หากติด Rate Limit ให้ดึงเวลารอแล้วลองใหม่
+                    const result = await response.json();
+                    const retryAfter = (result.retry_after || 1) * 1000;
 
-        } catch (error) {
-            console.error(error);
-            loadingBox.style.display = 'none';
-            errorBox.style.display = 'block';
-        }
+                    if (retryCount < 3) {
+                        setTimeout(() => sendToDiscord(retryCount + 1), retryAfter);
+                        return;
+                    }
+                }
+
+                if (response.ok) {
+                    loadingBox.style.display = 'none';
+                    successBox.style.display = 'block';
+                    closeApplyModal();
+                    document.getElementById('applyForm').reset();
+                } else {
+                    throw new Error('ส่งข้อมูลเข้า Discord ไม่สำเร็จ');
+                }
+            } catch (error) {
+                console.error("Webhook Error:", error);
+                loadingBox.style.display = 'none';
+                errorBox.style.display = 'block';
+            }
+        };
+
+        sendToDiscord();
     }
 
     document.addEventListener('DOMContentLoaded', renderTeamCards);
 </script>
 </body>
-[</html>]
+</html>
