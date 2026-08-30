@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAIBAN Studio - Minecraft Roleplay Studio</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -118,7 +119,6 @@
         <div class="title-bar"></div>
     </div>
 
-    <!-- กล่องแสดงรายชื่อสมาชิก (โหลดอัตโนมัติจาก JS) -->
     <div class="team-grid" id="teamGrid"></div>
 </section>
 
@@ -266,8 +266,9 @@
 </div>
 
 <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyo6fGlNYvJOSqde4dk1_IfnjDU4qevg6569Ymh_1mpLYiUAzEhKZ2rx_6BuqaeuJTfmw/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVoAGVL3JqndNn3FL8rOlvhKNYFNSFy-H2I-8P9bIzC6DnsRoVU180_obrHQ2qtt8Z/exec";
 
+    // อัปเดตชื่อไฟล์รูปภาพให้ตรงกับในเครื่องเป๊ะๆ
     const membersData = {
         member1: {
             name: "Scubydoo",
@@ -276,9 +277,7 @@
             bio: "ผู้ก่อตั้งแต่จุดกำเนิดของ ProJect RAIBAN Studio มีความเชี่ยวชาญด้านการกำกับเนื้อเรื่องและคุมโทนบรรยากาศในเกม",
             projects: ["Ravenhold Academy (Director)", "Winterhood (Director)"],
             socials: {
-                youtube: "https://www.youtube.com/@Ramyo-142",
-                tiktok: "#",
-                discord: "#"
+                youtube: "https://www.youtube.com/@Ramyo-142"
             }
         },
         member2: {
@@ -296,46 +295,30 @@
         member3: {
             name: "Norreyaeun",
             role: "Server Admin",
-            avatar: "norrey.jpg",
+            avatar: "norrey.jpg", // แก้ให้ตรงกับชื่อไฟล์ในเครื่อง
             bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Studio",
-            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"],
-            socials: {
-                youtube: "#",
-                discord: "#"
-            }
+            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"]
         },
         member4: {
             name: "Peawa",
             role: "Admin",
             avatar: "peaw.jpg",
             bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Studio",
-            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"],
-            socials: {
-                tiktok: "#",
-                discord: "#"
-            }
+            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"]
         },
         member5: {
             name: "Rin",
             role: "Admin",
             avatar: "rin.jpg",
             bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Studio",
-            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"],
-            socials: {
-                tiktok: "#",
-                discord: "#"
-            }
+            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"]
         },
         member6: {
             name: "Finn",
             role: "Admin",
-            avatar: "Finn.jpg",
+            avatar: "Finn.jpg", // แก้ให้ตรงกับตัวพิมพ์ใหญ่ F
             bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Studio",
-            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"],
-            socials: {
-                tiktok: "#",
-                discord: "#"
-            }
+            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"]
         }
     };
 
@@ -392,11 +375,9 @@
         const socContainer = document.getElementById('mSocials');
         socContainer.innerHTML = '';
         if (data.socials) {
-            if (data.socials.youtube && data.socials.youtube !== '#') socContainer.innerHTML += `<a href="${data.socials.youtube}" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>`;
-            if (data.socials.tiktok && data.socials.tiktok !== '#') socContainer.innerHTML += `<a href="${data.socials.tiktok}" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>`;
-            if (data.socials.facebook && data.socials.facebook !== '#') socContainer.innerHTML += `<a href="${data.socials.facebook}" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>`;
-            if (data.socials.instagram && data.socials.instagram !== '#') socContainer.innerHTML += `<a href="${data.socials.instagram}" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>`;
-            if (data.socials.discord && data.socials.discord !== '#') socContainer.innerHTML += `<a href="${data.socials.discord}" target="_blank" title="Discord"><i class="fa-brands fa-discord"></i></a>`;
+            if (data.socials.youtube) socContainer.innerHTML += `<a href="${data.socials.youtube}" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>`;
+            if (data.socials.tiktok) socContainer.innerHTML += `<a href="${data.socials.tiktok}" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>`;
+            if (data.socials.discord) socContainer.innerHTML += `<a href="${data.socials.discord}" target="_blank" title="Discord"><i class="fa-brands fa-discord"></i></a>`;
         }
 
         document.getElementById('memberModal').classList.add('active');
@@ -470,4 +451,4 @@
     document.addEventListener('DOMContentLoaded', renderTeamCards);
 </script>
 </body>
-</html>
+[</html>]
