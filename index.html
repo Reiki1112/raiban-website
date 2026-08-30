@@ -24,6 +24,7 @@
     <nav class="nav-links">
         <a href="#about">เกี่ยวกับค่าย</a>
         <a href="#projects">โปรเจกต์ของเรา</a>
+        <a href="#team">สมาชิก</a>
         <a href="https://www.tiktok.com/@raibanaeunstudio?_r=1&_t=ZN-99I0wK3t3VG" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
         <a href="https://discord.gg/kk4GdE2gd5" target="_blank" class="btn-nav"><i class="fa-brands fa-discord"></i> ชุมชน Discord</a>
     </nav>
@@ -108,6 +109,47 @@
         </div>
     </div>
 </section>
+
+<!-- Team Members Section -->
+<section id="team" class="team-section">
+    <div class="section-header">
+        <span class="section-tag">OUR TEAM</span>
+        <h2 class="section-title">สมาชิกในค่ายของเรา</h2>
+        <div class="title-bar"></div>
+    </div>
+
+    <!-- กล่องแสดงรายชื่อสมาชิก (โหลดอัตโนมัติจาก JS) -->
+    <div class="team-grid" id="teamGrid"></div>
+</section>
+
+<!-- Member Detail Modal -->
+<div id="memberModal" class="modal-overlay">
+    <div class="modal-container member-modal-container">
+        <button class="modal-close" onclick="closeMemberModal()">&times;</button>
+        <div class="member-modal-body">
+            <div class="member-modal-header">
+                <img id="mAvatar" src="Logo.png" alt="Member Avatar" class="member-modal-avatar">
+                <div class="member-header-details">
+                    <span id="mRole" class="team-role">ตำแหน่ง</span>
+                    <h2 id="mName">ชื่อสมาชิก</h2>
+                    <div id="mSocials" class="member-socials"></div>
+                </div>
+            </div>
+
+            <div class="member-detail-content">
+                <div class="detail-block">
+                    <h4><i class="fa-solid fa-address-card"></i> เกี่ยวกับสมาชิก</h4>
+                    <p id="mBio">รายละเอียดประวัติของสมาชิก...</p>
+                </div>
+
+                <div class="detail-block">
+                    <h4><i class="fa-solid fa-clapperboard"></i> ผลงานที่เคยมีส่วนร่วม</h4>
+                    <ul id="mProjects" class="member-project-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Application Modal -->
 <div id="applyModal" class="modal-overlay">
@@ -221,6 +263,136 @@
 <script>
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVoAGVL3JqndNn3FL8rOlvhKNYFNSFy-H2I-8P9bIzC6DnsRoVU180_obrHQ2qtt8Z/exec";
 
+    const membersData = {
+        member1: {
+            name: "Scubydoo",
+            role: "Founder",
+            avatar: "beam.jpg",
+            bio: "ผู้ก่อตั้งแต่จุดกำเนิดของ ProJect RAIBAN Community มีความเชี่ยวชาญด้านการกำกับเนื้อเรื่องและคุมโทนบรรยากาศในเกม",
+            projects: ["Ravenhold Academy (Director)", "Winterhood (Director)"],
+            socials: {
+                youtube: "https://www.youtube.com/@Ramyo-142",
+                tiktok: "#",
+                discord: "#"
+            }
+        },
+        member2: {
+            name: "Reiki Fenrir (Asteroid Studio)",
+            role: "Coding / Modder",
+            avatar: "Reiki.png",
+            isPartner: true, // 🟢 แท็ก PARTNER
+            bio: "ทีมนักพัฒนาโค๊ดหลังบ้านละจัดการเกี่ยวกับ Mod ต่างๆภายในเกม",
+            projects: ["None"],
+            socials: {
+                tiktok: "https://www.tiktok.com/@reikifenrirch",
+                discord: "https://discord.gg/PCQ8TRVZFp"
+            }
+        },
+        member3: {
+            name: "Norreyaeun",
+            role: "Server Admin",
+            avatar: "Norry.jpg",
+            bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Community",
+            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"],
+            socials: {
+                youtube: "#",
+                discord: "#"
+            }
+        },
+        member4: {
+            name: "Peawa",
+            role: "Admin",
+            avatar: "peaw.jpg",
+            bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Community",
+            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"],
+            socials: {
+                tiktok: "#",
+                discord: "#"
+            }
+        },
+        member5: {
+            name: "Rin",
+            role: "Admin",
+            avatar: "rin.jpg",
+            bio: "ผู้จัดการเกี่ยวกับระบบหน้าบ้านและหลังบ้านของ RAIBAN Community",
+            projects: ["Ravenhold Academy (Admin)", "Winterhood (Admin)"],
+            socials: {
+                tiktok: "#",
+                discord: "#"
+            }
+        }
+    };
+
+    function renderTeamCards() {
+        const teamGrid = document.getElementById('teamGrid');
+        if (!teamGrid) return;
+
+        teamGrid.innerHTML = '';
+
+        Object.keys(membersData).forEach(id => {
+            const member = membersData[id];
+
+            // แสดงแท็ก PARTNER ด้านบนซ้ายกรณีที่ตั้งค่า isPartner: true
+            const partnerBadge = member.isPartner
+                ? `<span class="partner-card-badge"><i class="fa-solid fa-handshake"></i> PARTNER</span>`
+                : '';
+
+            const cardHtml = `
+                <div class="team-card" onclick="openMemberModal('${id}')">
+                    ${partnerBadge}
+                    <div class="team-avatar-box">
+                        <img src="${member.avatar}" alt="${member.name}" class="team-avatar">
+                    </div>
+                    <div class="team-card-info">
+                        <span class="team-role">${member.role}</span>
+                        <h3 class="team-name">${member.name}</h3>
+                        <p class="team-short-bio">${member.bio || 'ไม่มีข้อมูลคำบรรยาย'}</p>
+                        <button class="btn-member-more"><i class="fa-solid fa-user"></i> ดูรายละเอียด</button>
+                    </div>
+                </div>
+            `;
+            teamGrid.innerHTML += cardHtml;
+        });
+    }
+
+    function openMemberModal(memberId) {
+        const data = membersData[memberId];
+        if (!data) return;
+
+        document.getElementById('mName').textContent = data.name;
+        document.getElementById('mRole').textContent = data.role;
+        document.getElementById('mAvatar').src = data.avatar;
+        document.getElementById('mBio').textContent = data.bio || 'ไม่มีข้อมูลคำบรรยายประวัติ';
+
+        const projList = document.getElementById('mProjects');
+        projList.innerHTML = '';
+        if (data.projects && data.projects.length > 0) {
+            data.projects.forEach(p => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fa-solid fa-clapperboard"></i> ${p}`;
+                projList.appendChild(li);
+            });
+        }
+
+        const socContainer = document.getElementById('mSocials');
+        socContainer.innerHTML = '';
+        if (data.socials) {
+            if (data.socials.youtube && data.socials.youtube !== '#') socContainer.innerHTML += `<a href="${data.socials.youtube}" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>`;
+            if (data.socials.tiktok && data.socials.tiktok !== '#') socContainer.innerHTML += `<a href="${data.socials.tiktok}" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>`;
+            if (data.socials.facebook && data.socials.facebook !== '#') socContainer.innerHTML += `<a href="${data.socials.facebook}" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>`;
+            if (data.socials.instagram && data.socials.instagram !== '#') socContainer.innerHTML += `<a href="${data.socials.instagram}" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>`;
+            if (data.socials.discord && data.socials.discord !== '#') socContainer.innerHTML += `<a href="${data.socials.discord}" target="_blank" title="Discord"><i class="fa-brands fa-discord"></i></a>`;
+        }
+
+        document.getElementById('memberModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMemberModal() {
+        document.getElementById('memberModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
     function openApplyModal() {
         document.getElementById('applyModal').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -280,6 +452,8 @@
             errorBox.style.display = 'block';
         }
     }
+
+    document.addEventListener('DOMContentLoaded', renderTeamCards);
 </script>
 </body>
 </html>
