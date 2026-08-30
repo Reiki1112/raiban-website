@@ -465,6 +465,7 @@
         errorBox.style.display = 'none';
         popup.classList.add('active');
 
+        // ดึงข้อมูลจากฟอร์ม
         const email = document.getElementById('email').value;
         const discordId = document.getElementById('discordId').value;
         const contactOther = document.getElementById('contactOther').value || 'ไม่มีการระบุ';
@@ -477,7 +478,7 @@
 
         const payload = {
             username: "RAIBAN Studio Application System",
-            avatar_url: "Logo.png",
+            avatar_url: "https://i.imgur.com/8N4Z2Za.png",
             embeds: [
                 {
                     title: "📝 มีใบสมัครเข้าร่วมค่ายใหม่เข้ามา!",
@@ -499,42 +500,27 @@
             ]
         };
 
-        const sendToDiscord = async (retryCount = 0) => {
-            try {
-                const response = await fetch(DISCORD_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+        try {
+            const response = await fetch(DISCORD_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
 
-                if (response.status === 429) {
-                    // หากติด Rate Limit ให้ดึงเวลารอแล้วลองใหม่
-                    const result = await response.json();
-                    const retryAfter = (result.retry_after || 1) * 1000;
-
-                    if (retryCount < 3) {
-                        setTimeout(() => sendToDiscord(retryCount + 1), retryAfter);
-                        return;
-                    }
-                }
-
-                if (response.ok) {
-                    loadingBox.style.display = 'none';
-                    successBox.style.display = 'block';
-                    closeApplyModal();
-                    document.getElementById('applyForm').reset();
-                } else {
-                    throw new Error('ส่งข้อมูลเข้า Discord ไม่สำเร็จ');
-                }
-            } catch (error) {
-                console.error("Webhook Error:", error);
+            if (response.ok) {
                 loadingBox.style.display = 'none';
-                errorBox.style.display = 'block';
+                successBox.style.display = 'block';
+                closeApplyModal();
+                document.getElementById('applyForm').reset();
+            } else {
+                throw new Error('ส่งข้อมูลไม่สำเร็จ');
             }
-        };
-
-        sendToDiscord();
-    }
+        } catch (error) {
+            console.error("Webhook Error:", error);
+            loadingBox.style.display = 'none';
+            errorBox.style.display = 'block';
+        }
+    };
 
     document.addEventListener('DOMContentLoaded', renderTeamCards);
 </script>
