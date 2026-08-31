@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAIBAN Store - ร้านค้าและบริการ</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .shop-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 0.6rem 1.8rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: linear-gradient(135deg, var(--light-pink), var(--accent));
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(248, 178, 178, 0.3);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: none;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .shop-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(248, 178, 178, 0.3);
+        }
+
+        .shop-card.sold-out {
+            opacity: 0.7;
+        }
+
+        .sold-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff4757;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 2px 10px rgba(255, 71, 87, 0.4);
+            z-index: 2;
+        }
+
+        .shop-thumb {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #1a1728;
+        }
+
+        .shop-details {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .shop-tag {
+            font-size: 0.75rem;
+            color: var(--light-pink);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .shop-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .shop-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+
+        .shop-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1rem;
+        }
+
+        .price-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .price-text span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .pay-details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        .terms-container {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            text-align: left;
+            max-height: 140px;
+            overflow-y: auto;
+        }
+
+        .terms-container h4 {
+            color: var(--light-pink);
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .terms-container ul {
+            padding-left: 1.2rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .terms-container ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        .terms-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            text-align: left;
+            margin-bottom: 1.2rem;
+        }
+
+        .terms-box input {
+            margin-top: 3px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .terms-box label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .qr-status {
+            font-size: 0.85rem;
+            color: #f1c40f;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .download-area {
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        .btn-download {
+            background: #2ed573;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(46, 213, 115, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-sold-out {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: not-allowed;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <i class="fa-solid fa-clapperboard logo-icon"></i>
+        <span>RAIBAN</span> STUDIO
+    </a>
+    <nav class="nav-links">
+        <a href="index.html#about">เกี่ยวกับค่าย</a>
+        <a href="index.html#projects">โปรเจกต์ของเรา</a>
+        <a href="shop.html" style="color: var(--light-pink);">ร้านค้า</a>
+        <a href="index.html#team">สมาชิก</a>
+        <a href="https://discord.gg/kk4GdE2gd5" target="_blank" class="btn-nav"><i class="fa-brands fa-discord"></i> ชุมชน Discord</a>
+    </nav>
+</header>
+
+<main class="shop-container">
+    <div class="section-header">
+        <span class="section-tag">RAIBAN STORE</span>
+        <h2 class="section-title">ร้านค้าและสินค้าดิจิทัล</h2>
+        <div class="title-bar"></div>
+    </div>
+
+    <div class="category-tabs">
+        <button class="tab-btn active" onclick="filterCategory('map', this)">
+            <i class="fa-solid fa-map"></i> Map
+        </button>
+        <button class="tab-btn" onclick="filterCategory('collectibles', this)">
+            <i class="fa-solid fa-box-archive"></i> ของสะสม
+        </button>
+    </div>
+
+    <div class="shop-grid" id="mapCategory">
+        <div class="shop-card">
+            <img src="Reven.png" alt="Ravenhold Map" class="shop-thumb">
+            <div class="shop-details">
+                <span class="shop-tag">MINECRAFT MAP</span>
+                <h3 class="shop-title">Ravenhold Academy Map</h3>
+                <p class="shop-desc">แผนที่สถาบันเรเวนโฮลด์ ตกแต่งรายละเอียดสูง พร้อมใช้งานทำ Roleplay หรือสำรวจ</p>
+                <div class="shop-footer">
+                    <div class="price-text" style="color: var(--text-muted);">0 <span>THB</span></div>
+                    <button class="btn-sold-out" disabled>กำลังปรับปรุง</button>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="shop-card sold-out">
+            <div class="sold-badge"><i class="fa-solid fa-lock"></i> ขายแล้ว</div>
+            <img src="Reven.png" alt="Exclusive Map" class="shop-thumb" style="filter: grayscale(80%);">
+            <div class="shop-details">
+                <span class="shop-tag">EXCLUSIVE MAP</span>
+                <h3 class="shop-title">Custom Spawn Village</h3>
+                <p class="shop-desc">แผนที่หมู่บ้านจุดเกิดแบบ Exclusive มีผู้ซื้อสิทธิ์ขาดไปแล้ว</p>
+                <div class="shop-footer">
+                    <div class="price-text" style="color: var(--text-muted);">0 <span>THB</span></div>
+                    <button class="btn-sold-out" disabled>กำลังปรับปรุง</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="empty-state" id="collectiblesCategory">
+        <i class="fa-solid fa-box-open"></i>
+        <p>ยังไม่มีสินค้าในขณะนี้</p>
+    </div>
+</main>
+
+<div id="paymentModal" class="modal-overlay">
+    <div class="modal-container member-modal-container" style="max-width: 440px;">
+        <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+        <div class="member-modal-body" style="padding: 1.8rem;">
+
+            <div id="payStepTerms">
+                <h3 style="color:#fff; font-size: 1.2rem; margin-bottom: 0.8rem;">
+                    <i class="fa-solid fa-file-contract"></i> ข้อตกลงการใช้งาน
+                </h3>
+
+                <div class="terms-container">
+                    <h4>เงื่อนไขและข้อตกลงก่อนสั่งซื้อ:</h4>
+                    <ul>
+                        <li>หากซื้อแมพมาแล้ว จะนำไปแจกต่อต้องให้เครดิตผู้สร้างทุกครั้ง</li>
+                        <li>ห้ามแอบอ้างเป็นเจ้าของผลงานเด็ดขาด</li>
+                        <li>สามารถเปลี่ยนแปลงสิ่งปลูกสร้างได้ 100%</li>
+                        <li>ห้ามนำแมพไปขายต่อ หรือนำไปใช้สร้างรายได้เด็ดขาด</li>
+                        <li style="color: #ff4757; font-weight: 600;">หากพบเจอการละเมิดเงื่อนไข จะทำการปรับ 10 เท่าของราคางาน</li>
+                    </ul>
+                </div>
+
+                <div class="terms-box">
+                    <input type="checkbox" id="acceptTerms" onchange="toggleAgreeButton()">
+                    <label for="acceptTerms">ฉันได้อ่าน และยอมรับข้อตกลงการใช้งานข้างต้นทุกประการ</label>
+                </div>
+
+                <button class="btn-showcase-action" id="btnGoToPay" style="width: 100%; justify-content: center; opacity: 0.5; cursor: not-allowed;" disabled onclick="generateSingleUseQR()">
+                    ดำเนินการชำระเงิน <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div id="payStepQR" style="display: none;">
+                <h3 style="color:#fff; font-size: 1.1rem; margin-bottom: 0.3rem;"><i class="fa-solid fa-qrcode"></i> สแกนเพื่อชำระเงิน</h3>
+
+                <div class="pay-details" style="margin: 0.5rem 0;">
+                    <p style="margin:0;"><strong>สินค้า:</strong> <span id="payItemName">-</span></p>
+                    <p style="margin:0;"><strong>ยอดชำระ:</strong> <span id="payItemPrice" style="color: var(--light-pink); font-weight: 700;">-</span> บาท</p>
+                </div>
+
+                <div style="text-align: center; margin: 1rem 0;">
+                    <img id="dynamicQrImg" src="" alt="Dynamic Payment QR" style="border-radius: 10px; border: 3px solid #fff; width: 180px; height: 180px;">
+                    <div class="qr-status" id="qrStatusText">
+                        <i class="fa-solid fa-spinner fa-spin"></i> กำลังรอการชำระเงินจากระบบ...
+                    </div>
+                </div>
+
+                <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">ระบบตรวจสอบสถานะอัตโนมัติ (คิวอาร์โค้ดใช้ได้ครั้งเดียว)</p>
+            </div>
+
+            <div id="payStepSuccess" style="display: none;" class="download-area">
+                <div style="font-size: 3.5rem; color: #2ed573; margin-bottom: 0.8rem;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.5rem;">ชำระเงินสำเร็จ!</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">ระบบได้รับการชำระเงินเรียบร้อยแล้ว คุณสามารถดาวน์โหลดไฟล์ได้ทันที</p>
+
+                <a href="#" id="downloadLink" download class="btn-download">
+                    <i class="fa-solid fa-download"></i> ดาวน์โหลด Map
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const BACKEND_URL = 'http://localhost:3000';
+    let currentItem = { name: '', price: 0 };
+    let currentOrderId = null;
+    let pollInterval = null;
+
+    function filterCategory(category, btn) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const mapCat = document.getElementById('mapCategory');
+        const collectCat = document.getElementById('collectiblesCategory');
+
+        if (category === 'map') {
+            mapCat.style.display = 'grid';
+            collectCat.style.display = 'none';
+        } else {
+            mapCat.style.display = 'none';
+            collectCat.style.display = 'block';
+        }
+    }
+
+    function openPaymentModal(itemName, price) {
+        currentItem = { name: itemName, price: price };
+
+        document.getElementById('payItemName').textContent = itemName;
+        document.getElementById('payItemPrice').textContent = price;
+
+        document.getElementById('acceptTerms').checked = false;
+        toggleAgreeButton();
+        document.getElementById('payStepTerms').style.display = 'block';
+        document.getElementById('payStepQR').style.display = 'none';
+        document.getElementById('payStepSuccess').style.display = 'none';
+
+        document.getElementById('paymentModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePaymentModal() {
+        document.getElementById('paymentModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+        if (pollInterval) clearInterval(pollInterval);
+    }
+
+    function toggleAgreeButton() {
+        const checkbox = document.getElementById('acceptTerms');
+        const btn = document.getElementById('btnGoToPay');
+        btn.disabled = !checkbox.checked;
+        btn.style.opacity = checkbox.checked ? '1' : '0.5';
+        btn.style.cursor = checkbox.checked ? 'pointer' : 'not-allowed';
+    }
+
+    // ยิงไปขอ QR จาก Backend
+    async function generateSingleUseQR() {
+        document.getElementById('payStepTerms').style.display = 'none';
+        document.getElementById('payStepQR').style.display = 'block';
+
+        try {
+            const response = await fetch(`${BACKEND_URL}/api/create-qr`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ amount: currentItem.price })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                currentOrderId = data.orderId;
+                document.getElementById('dynamicQrImg').src = data.qrImage;
+
+                // ยิงเช็กสถานะจาก Backend ทุกๆ 3 วินาที
+                pollInterval = setInterval(checkPaymentStatus, 3000);
+            } else {
+                alert('ไม่สามารถสร้าง QR Code ได้ กรุณาลองใหม่อีกครั้ง');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('ไม่สามารถเชื่อมต่อกับ Server (localhost:3000) ได้');
+        }
+    }
+
+    // เช็กว่าชำระเงินเรียบร้อยหรือยัง
+    async function checkPaymentStatus() {
+        if (!currentOrderId) return;
+
+        try {
+            const response = await fetch(`${BACKEND_URL}/api/check-status/${currentOrderId}`);
+            const data = await response.json();
+
+            if (data.paid) {
+                clearInterval(pollInterval);
+
+                document.getElementById('payStepQR').style.display = 'none';
+                document.getElementById('payStepSuccess').style.display = 'block';
+                document.getElementById('downloadLink').href = data.downloadUrl;
+            }
+        } catch (error) {
+            console.error('Error checking status:', error);
+        }
+    }
+</script>
+</body>
+</html>

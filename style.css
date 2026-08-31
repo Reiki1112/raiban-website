@@ -942,3 +942,138 @@ body {
     .member-modal-header { flex-direction: column; text-align: center; }
     .member-socials { justify-content: center; }
 }
+
+/* ==========================================
+   ANIMATIONS & TRANSITIONS (เพิ่มความพริ้วไหว)
+   ========================================== */
+
+/* 1. เอฟเฟกต์เฟดอินและลอยขึ้นขณะโหลดองค์ประกอบ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. เอฟเฟกต์แสงนีออนวาบ (Glow Pulse) สำหรับ Badge หรือปุ่ม */
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 5px rgba(164, 229, 16, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(164, 229, 16, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(164, 229, 16, 0.4);
+    }
+}
+
+/* 3. เอฟเฟกต์เปลี่ยนรูป/วิดีโอพื้นหลัง Showcase อย่างนุ่มนวล */
+@keyframes mediaFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.03);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- นำแอนิเมชันไปใชักับองค์ประกอบต่างๆ --- */
+
+/* Hero Content เฟดอินขึ้นมาอย่างเป็นระดับ */
+.hero-content-box {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-title {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+.hero-subtitle {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.hero-buttons {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* ปรับสื่อใน Showcase ให้มี Transition ตอนสลับภาพ/วิดีโอ */
+.showcase-media {
+    animation: mediaFadeIn 0.6s ease-out forwards;
+}
+
+/* ข้อความใน Showcase สลับอย่างละมุน */
+.showcase-content {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* เพิ่มแอนิเมชันให้ปุ่มกดมีความเด้งและสมูท */
+.btn-primary,
+.btn-secondary,
+.btn-apply,
+.btn-showcase-action,
+.btn-nav {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-primary:hover,
+.btn-apply:hover,
+.btn-showcase-action:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.btn-primary:active,
+.btn-apply:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* การ์ดทีมและตัวเลือกภาพ (Thumbnails) */
+.team-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(164, 229, 16, 0.2);
+}
+
+.thumb-card {
+    transition: transform 0.25s ease, opacity 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.thumb-card:hover {
+    transform: translateY(-4px);
+}
+
+.thumb-card.active {
+    animation: neonPulse 2s infinite;
+}
+
+/* แอนิเมชันการเปิด Modal เด้งขึ้นมา */
+.modal-container,
+.notice-modal-card,
+.status-popup-card {
+    animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* แอนิเมชันสำหรับข้อความโปรเจกต์ตอนสลับหน้า */
+.pj-fade-in {
+    animation: pjTextSwap 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pjTextSwap {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

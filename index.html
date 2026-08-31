@@ -10,6 +10,260 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Hero Section Background Video Overlay --- */
+        .hero-video-wrapper {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(18, 16, 29, 0.4) 0%, rgba(18, 16, 29, 0.88) 100%);
+            z-index: 1;
+        }
+
+        .hero-content-box {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* --- Dynamic Projects Showcase Section --- */
+        .showcase-section {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 4rem 5% 2.5rem;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .showcase-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .showcase-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: mediaFadeIn 0.6s ease-out forwards;
+        }
+
+        .showcase-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.85) 100%),
+            linear-gradient(0deg, rgba(0,0,0,0.95) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        .showcase-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin-top: auto;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .showcase-tag {
+            color: var(--light-pink);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        .showcase-title {
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.05;
+            margin: 0.3rem 0 1rem;
+            letter-spacing: 1px;
+        }
+
+        .showcase-desc {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-showcase-action {
+            background: linear-gradient(135deg, var(--light-pink), var(--accent));
+            color: #fff;
+            border: none;
+            padding: 0.85rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-showcase-action:hover {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .showcase-selector-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            text-align: left;
+        }
+
+        .selector-label {
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .showcase-thumbnails {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .thumb-card {
+            min-width: 170px;
+            height: 95px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.55;
+            transition: transform 0.25s ease, opacity 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .thumb-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumb-card:hover {
+            opacity: 0.85;
+            transform: translateY(-4px);
+        }
+
+        .thumb-card.active {
+            border-color: var(--light-pink);
+            opacity: 1;
+            animation: neonPulse 2s infinite;
+        }
+
+        .thumb-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 6px 8px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.92));
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes pjTextSwap {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pj-fade-in {
+            animation: pjTextSwap 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes mediaFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(1.03);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 5px rgba(248, 178, 178, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(248, 178, 178, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(248, 178, 178, 0.4); }
+        }
+
+        .team-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(248, 178, 178, 0.2);
+        }
+    </style>
 </head>
 <body>
 
@@ -33,86 +287,78 @@
 </header>
 
 <!-- Hero Section -->
-<section id="about" class="hero">
-    <div class="hero-logo-container">
-        <img src="Logo.png" alt="RAIBAN Community Logo" class="hero-main-logo">
-    </div>
+<section id="about" class="hero hero-video-wrapper">
+    <video autoplay muted loop playsinline class="hero-bg-video">
+        <source src="TeaserRaven2.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
 
-    <div class="hero-badge">
-        <span class="badge-dot"></span> RAIBAN STUDIO
-    </div>
+    <div class="hero-content-box">
+        <div class="hero-logo-container">
+            <img src="Logo.png" alt="RAIBAN Community Logo" class="hero-main-logo">
+        </div>
 
-    <h1 class="hero-title">
-        สร้างสรรค์เรื่องราว <br>
-        <span class="gradient-text">ผ่านโลก Minecraft Roleplay</span>
-    </h1>
+        <div class="hero-badge">
+            <span class="badge-dot"></span> RAIBAN STUDIO
+        </div>
 
-    <p class="hero-subtitle">
-        RAIBAN Studio คือสตูดิโอผู้สร้างสรรค์เนื้อหาความบันเทิงคลิปวิดีโอ Minecraft RolePlay
-    </p>
+        <h1 class="hero-title">
+            สร้างสรรค์เรื่องราว <br>
+            <span class="gradient-text">ผ่านโลก Minecraft Roleplay</span>
+        </h1>
 
-    <div class="hero-buttons">
-        <button class="btn-apply" onclick="openApplyModal()">
-            <i class="fa-solid fa-file-pen"></i> สมัครงานร่วมค่าย
-        </button>
-        <a href="https://discord.gg/kk4GdE2gd5" target="_blank" class="btn-primary">
-            <i class="fa-brands fa-discord"></i> Discord
-        </a>
-        <a href="https://www.tiktok.com/@raibanaeunstudio?_r=1&_t=ZN-99I0wK3t3VG" target="_blank" class="btn-secondary">
-            <i class="fa-brands fa-tiktok"></i> TikTok
-        </a>
-    </div>
+        <p class="hero-subtitle">
+            RAIBAN Studio คือสตูดิโอผู้สร้างสรรค์เนื้อหาความบันเทิงคลิปวิดีโอ Minecraft RolePlay
+        </p>
 
-    <div class="partner-box">
-        <p class="partner-label">PARTNER & SUPPORTED BY</p>
-        <div class="partner-content">
-            <img src="Logo2.png" alt="ASTEROID STUDIO Logo" class="partner-logo">
-            <div class="partner-text">
-                <span class="partner-name">ASTEROID STUDIO</span>
-                <span class="partner-sub">แอสเทอร์รอยด์ สตูดิโอ</span>
+        <div class="hero-buttons">
+            <button class="btn-apply" onclick="openApplyModal()">
+                <i class="fa-solid fa-file-pen"></i> สมัครงานร่วมค่าย
+            </button>
+            <a href="https://discord.gg/kk4GdE2gd5" target="_blank" class="btn-primary">
+                <i class="fa-brands fa-discord"></i> Discord
+            </a>
+            <a href="https://www.tiktok.com/@raibanaeunstudio?_r=1&_t=ZN-99I0wK3t3VG" target="_blank" class="btn-secondary">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+        </div>
+
+        <div class="partner-box">
+            <p class="partner-label">PARTNER & SUPPORTED BY</p>
+            <div class="partner-content">
+                <img src="Logo2.png" alt="ASTEROID STUDIO Logo" class="partner-logo">
+                <div class="partner-text">
+                    <span class="partner-name">ASTEROID STUDIO</span>
+                    <span class="partner-sub">แอสเทอร์รอยด์ สตูดิโอ</span>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Projects Section -->
-<section id="projects" class="projects-section">
-    <div class="section-header">
-        <span class="section-tag">OUR PROJECTS</span>
-        <h2 class="section-title">ผลงานซีรีส์ของเรา</h2>
-        <div class="title-bar"></div>
+<!-- Projects Showcase Section -->
+<section id="projects" class="showcase-section">
+    <div class="showcase-bg-container" id="showcaseBg"></div>
+    <div class="showcase-gradient"></div>
+
+    <div class="showcase-content">
+        <span class="showcase-tag">โปรเจกต์</span>
+        <h1 class="showcase-title" id="pjTitle">CROJORN</h1>
+        <p class="showcase-desc" id="pjDesc">
+            Crojorn ผู้ใช้พรกระแสสุดท้าย โปรเจกต์ที่ 6 ภายใต้การดูแลของ Aplace Studio
+        </p>
+        <a href="#" class="btn-showcase-action" id="pjBtn" target="_blank">
+            <i class="fa-solid fa-play"></i> เข้าดูโปรเจกต์
+        </a>
     </div>
 
-    <div class="projects-grid">
-        <div class="project-card">
-            <div class="project-poster">
-                <img src="Reven.png" alt="Season 1 Ravenhold academy">
-                <div class="season-badge">SEASON 1</div>
-            </div>
-            <div class="project-info">
-                <h3>Ravenhold Academy</h3>
-                <p class="project-desc">
-                    เรื่องราวการผจญภัยและความลับอันลึกลับภายในสถาบันเรเวนโฮลด์ ที่รอคอยการค้นพบและเปิดเผย...
-                </p>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-poster">
-                <img src="WINTERHOOD.png" alt="Season 2 Winterhood">
-                <div class="season-badge">SEASON 2</div>
-            </div>
-            <div class="project-info">
-                <h3>Winterhood</h3>
-                <p class="project-desc">
-                    คุกหิมะที่ไม่ได้ตั้งอยู่ในประเทศใดเลย ทว่าในคุกกลับมีเรื่องราวสุดแปลกที่ไม่อาจมีใครรู้ได้ เพราะคนที่รู้ไม่เคยรอดกลับมาเล่าเรื่อง
-                </p>
-            </div>
-        </div>
+    <div class="showcase-selector-wrapper">
+        <span class="selector-label">โปรเจกต์ทั้งหมด</span>
+        <div class="showcase-thumbnails" id="projectThumbnails"></div>
     </div>
 </section>
 
-<!-- Shop Section -->
+<!-- Shop Section ใน index.html -->
 <section id="shop" class="projects-section">
     <div class="section-header">
         <span class="section-tag">STORE & SERVICES</span>
@@ -129,12 +375,13 @@
             <div class="project-info">
                 <h3>ร้านค้า RAIBAN Studio</h3>
                 <p class="project-desc">
-                    เลือกซื้อสินค้าและบริการพิเศษจากสตูดิโอของเรา
+                    เลือกซื้อสินค้า แผนที่ Minecraft และของสะสมพิเศษจากสตูดิโอของเรา
                 </p>
                 <div class="product-price-bar">
-                    <button class="btn-buy-sm" onclick="openNoticeModal('ยังไม่มีสินค้าในขณะนี้')">
-                        <i class="fa-solid fa-cart-shopping"></i> สั่งซื้อสินค้า
-                    </button>
+                    <!-- แก้ไขจุดนี้: เปลี่ยนให้กดแล้วเปิดไปที่หน้า shop.html -->
+                    <a href="shop.html" class="btn-buy-sm" style="text-decoration: none;">
+                        <i class="fa-solid fa-cart-shopping"></i> เข้าสู่ร้านค้าสั่งซื้อ
+                    </a>
                 </div>
             </div>
         </div>
@@ -308,8 +555,86 @@
 </div>
 
 <script>
-    // วาง Webhook URL ของ Discord ที่นี่
     const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1543604705916092477/SmORLDeNCEXY_LR66BerJ8sOu0C_S5UFuDk8eInNeT6qVEiYP7cKGV2EX-YEnK4BXGXX";
+
+    const showcaseProjects = [
+        {
+            id: "ravenhold",
+            title: "Ravenhold Academy",
+            desc: "โปรเจ็กต์เกี่ยวกับโรงเรียนแฟนตาซีแบบไม่มีเวทมนต์เพราะเวทมนต์หนีไปพักร้อน",
+            poster: "Reven.png",
+            video: null,
+            link: null
+        },
+        {
+            id: "winterhood",
+            title: "Winterhood",
+            desc: "คุกหิมะที่ไม่ได้ตั้งอยู่ในประเทศใดเลย ทว่าในคุกกลับมีเรื่องราวสุดแปลกที่ไม่อาจมีใครรู้ได้ เพราะคนที่รู้ไม่เคยรอดกลับมาเล่าเรื่อง",
+            poster: "WINTERHOOD.png",
+            video: null,
+            link: null
+        },
+        {
+            id: "ravenhold2",
+            title: "Ravenhold Academy Season 2",
+            desc: "กำลังดำเนินการ",
+            poster: "raven2.png",
+            video: "TeaserRaven2.mp4",
+            link: "https://discord.gg/kk4GdE2gd5"
+        }
+    ];
+
+    let activeProjectIndex = 0;
+
+    function selectProject(index) {
+        if (activeProjectIndex === index) return;
+
+        activeProjectIndex = index;
+
+        const titleEl = document.getElementById('pjTitle');
+        const descEl = document.getElementById('pjDesc');
+        const btnEl = document.getElementById('pjBtn');
+
+        titleEl.classList.remove('pj-fade-in');
+        descEl.classList.remove('pj-fade-in');
+        btnEl.classList.remove('pj-fade-in');
+
+        renderShowcase();
+
+        void titleEl.offsetWidth;
+        titleEl.classList.add('pj-fade-in');
+        descEl.classList.add('pj-fade-in');
+        btnEl.classList.add('pj-fade-in');
+    }
+
+    function renderShowcase() {
+        const bgContainer = document.getElementById('showcaseBg');
+        const titleEl = document.getElementById('pjTitle');
+        const descEl = document.getElementById('pjDesc');
+        const btnEl = document.getElementById('pjBtn');
+        const thumbContainer = document.getElementById('projectThumbnails');
+        const project = showcaseProjects[activeProjectIndex];
+
+        titleEl.textContent = project.title;
+        descEl.textContent = project.desc;
+        btnEl.href = project.link;
+
+        if (project.video) {
+            bgContainer.innerHTML = `<video autoplay muted loop playsinline class="showcase-media"><source src="${project.video}" type="video/mp4"></video>`;
+        } else {
+            bgContainer.innerHTML = `<img src="${project.poster}" class="showcase-media" alt="${project.title}">`;
+        }
+
+        thumbContainer.innerHTML = '';
+        showcaseProjects.forEach((item, index) => {
+            const isActive = index === activeProjectIndex ? 'active' : '';
+            const card = document.createElement('div');
+            card.className = `thumb-card ${isActive}`;
+            card.onclick = () => selectProject(index);
+            card.innerHTML = `<img src="${item.poster}" alt="${item.title}"><div class="thumb-title">${item.title}</div>`;
+            thumbContainer.appendChild(card);
+        });
+    }
 
     function openNoticeModal(message) {
         if(message) {
@@ -451,7 +776,6 @@
         document.getElementById('statusPopup').classList.remove('active');
     }
 
-    // ฟังก์ชันส่งข้อมูลผ่าน Discord Webhook
     async function handleApplySubmit(event) {
         event.preventDefault();
 
@@ -465,7 +789,6 @@
         errorBox.style.display = 'none';
         popup.classList.add('active');
 
-        // ดึงข้อมูลจากฟอร์ม
         const email = document.getElementById('email').value;
         const discordId = document.getElementById('discordId').value;
         const contactOther = document.getElementById('contactOther').value || 'ไม่มีการระบุ';
@@ -520,9 +843,12 @@
             loadingBox.style.display = 'none';
             errorBox.style.display = 'block';
         }
-    };
+    }
 
-    document.addEventListener('DOMContentLoaded', renderTeamCards);
+    document.addEventListener('DOMContentLoaded', () => {
+        renderShowcase();
+        renderTeamCards();
+    });
 </script>
 </body>
 </html>
