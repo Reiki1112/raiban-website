@@ -358,7 +358,7 @@
     </div>
 </section>
 
-<!-- Shop Section ใน index.html -->
+<!-- Shop Section -->
 <section id="shop" class="projects-section">
     <div class="section-header">
         <span class="section-tag">STORE & SERVICES</span>
@@ -375,13 +375,12 @@
             <div class="project-info">
                 <h3>ร้านค้า RAIBAN Studio</h3>
                 <p class="project-desc">
-                    เลือกซื้อสินค้า แผนที่ Minecraft และของสะสมพิเศษจากสตูดิโอของเรา
+                    เลือกซื้อสินค้าและบริการพิเศษจากสตูดิโอของเรา
                 </p>
                 <div class="product-price-bar">
-                    <!-- แก้ไขจุดนี้: เปลี่ยนให้กดแล้วเปิดไปที่หน้า shop.html -->
-                    <a href="shop.html" class="btn-buy-sm" style="text-decoration: none;">
-                        <i class="fa-solid fa-cart-shopping"></i> เข้าสู่ร้านค้าสั่งซื้อ
-                    </a>
+                    <button class="btn-buy-sm" onclick="openNoticeModal('ยังไม่มีสินค้าในขณะนี้')">
+                        <i class="fa-solid fa-cart-shopping"></i> สั่งซื้อสินค้า
+                    </button>
                 </div>
             </div>
         </div>
@@ -561,10 +560,10 @@
         {
             id: "ravenhold",
             title: "Ravenhold Academy",
-            desc: "โปรเจ็กต์เกี่ยวกับโรงเรียนแฟนตาซีแบบไม่มีเวทมนต์เพราะเวทมนต์หนีไปพักร้อน",
+            desc: "ไม่รู้เหมือนกัน",
             poster: "Reven.png",
             video: null,
-            link: null
+            link: "https://discord.gg/kk4GdE2gd5"
         },
         {
             id: "winterhood",
@@ -572,16 +571,24 @@
             desc: "คุกหิมะที่ไม่ได้ตั้งอยู่ในประเทศใดเลย ทว่าในคุกกลับมีเรื่องราวสุดแปลกที่ไม่อาจมีใครรู้ได้ เพราะคนที่รู้ไม่เคยรอดกลับมาเล่าเรื่อง",
             poster: "WINTERHOOD.png",
             video: null,
-            link: null
+            link: "https://discord.gg/kk4GdE2gd5"
+        },
+        {
+            id: "bannok",
+            title: "Bânnók",
+            desc: "หมูบ้านลับแลที่มีขุมสมบัติอยู่มากมาย",
+            poster: "bannok.png",
+            video: "Bannok.mp4",
+            link: "https://discord.gg/kk4GdE2gd5"
         },
         {
             id: "ravenhold2",
             title: "Ravenhold Academy Season 2",
             desc: "กำลังดำเนินการ",
-            poster: "raven2.png",
+            poster: "Raven2.png",
             video: "TeaserRaven2.mp4",
-            link: "https://discord.gg/kk4GdE2gd5"
-        }
+            link: "https://www.tiktok.com/@raibanaeunstudio/video/7679742347365682448?is_from_webapp=1&sender_device=pc&web_id=7679650703191754241"
+        },
     ];
 
     let activeProjectIndex = 0;
